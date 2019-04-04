@@ -33,6 +33,7 @@ class Config
          * Define relative base path.
          */
         define('DIR', '/baseProjet/');
+        define('ENV', 'DEV');
 
         /*
          * Set default controller and method for legacy calls.
