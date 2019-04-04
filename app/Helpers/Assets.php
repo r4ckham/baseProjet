@@ -19,8 +19,8 @@ class Assets
      */
     protected static $templates = 
     [
-        'js'  => '<script src="%s" type="text/javascript"></script>',
-        'css' => '<link href="%s" rel="stylesheet" type="text/css">',
+        'js'  => '<script src="%s?%s" type="text/javascript"></script>',
+        'css' => '<link href="%s?%s" rel="stylesheet" type="text/css">',
     ];
 
     /**
@@ -35,10 +35,10 @@ class Assets
 
         if (is_array($files)) {
             foreach ($files as $file) {
-                echo sprintf($template, $file)."\n";
+                echo sprintf($template, $file, ASSETS_VERSION)."\n";
             }
         } else {
-            echo sprintf($template, $files)."\n";
+            echo sprintf($template, $files, ASSETS_VERSION)."\n";
         }
     }
 
@@ -46,19 +46,30 @@ class Assets
      * Output script.
      *
      * @param array|string $file/s
+     * @param array|string $addition/s (optional)
      */
-    public static function js($files)
+    public static function js($files, $additions = null)
     {
-        static::resource($files, 'js');
+        self::resource($files, 'js');
+        
+        if (!empty($additions)) {
+            self::resource($additions, 'js');
+        }
     }
 
     /**
      * Output stylesheet.
      *
-     * @param string $file
+     * @param array|string $file/s
+     * @param array|string $addition/s (optional)
      */
-    public static function css($files)
+    public static function css($files, $additions = null)
     {
-        static::resource($files, 'css');
+        self::resource($files, 'css');
+        
+        if (!empty($additions)) {
+            self::resource($additions, 'css');
+        }
     }
+    
 }
