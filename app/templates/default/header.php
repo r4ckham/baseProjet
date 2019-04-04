@@ -80,7 +80,10 @@ $hooks = Hooks::get();
         Url::templatePath() . "plugins/AdminLTE/plugins/iCheck/icheck.js",
         
         // Socket.io
-        Url::templatePath() . "plugins/AdminLTE/plugins/iCheck/icheck.js"
+        Url::templatePath() . "plugins/AdminLTE/plugins/iCheck/icheck.js",
+        
+        // Site
+        Url::templatePath() . "js/site.js",
     ]);
 ?>
 
